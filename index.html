@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>USPEER | BITE DISTRICT</title>
+
+  <style>
+    /* =========================
+       BASIC
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans TC", sans-serif;
+      background: #f2efe4;
+      color: #171717;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    section {
+      padding: 110px 8%;
+    }
+
+    .section-label {
+      font-size: 13px;
+      letter-spacing: 4px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: #71821d;
+    }
+
+    .section-title {
+      font-size: clamp(42px, 7vw, 95px);
+      line-height: .9;
+      text-transform: uppercase;
+      letter-spacing: -4px;
+    }
+
+    .green-btn {
+      display: inline-block;
+      padding: 15px 28px;
+      background: #b7c93b;
+      border: 1px solid #171717;
+      font-weight: bold;
+      transition: .3s;
+      cursor: pointer;
+    }
+
+    .green-btn:hover {
+      background: #171717;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 5%;
+
+      background: rgba(242,239,228,.9);
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid rgba(0,0,0,.12);
+
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #171717;
+      transition: .3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+
+    /* =========================
+       HERO
+    ========================== */
+
+    #home {
+      min-height: 100vh;
+      padding-top: 120px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-word {
+      position: absolute;
+
+      font-size: clamp(130px, 25vw, 380px);
+      font-weight: 900;
+      color: rgba(183,201,59,.16);
+
+      white-space: nowrap;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      pointer-events: none;
+    }
+
+    .hero {
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-small {
+      letter-spacing: 6px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(70px, 13vw, 180px);
+      line-height: .75;
+      letter-spacing: -8px;
+    }
+
+    .hero h2 {
+      font-size: clamp(28px, 5vw, 70px);
+      margin-top: 15px;
+      font-weight: 400;
+    }
+
+    .hero-image {
+      width: min(900px, 90%);
+      height: 420px;
+
+      margin: 45px auto 30px;
+
+      border: 2px solid #171717;
+      overflow: hidden;
+
+      transform: rotate(-1deg);
+      background: #d8d5cb;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-date {
+      margin: 25px 0;
+      letter-spacing: 4px;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    #about {
+      background: #171717;
+      color: #f2efe4;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 650px;
+      object-fit: cover;
+    }
+
+    .about-sticker {
+      position: absolute;
+      right: -25px;
+      bottom: -25px;
+
+      width: 120px;
+      height: 120px;
+
+      border-radius: 50%;
+
+      background: #b7c93b;
+      color: #171717;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      font-weight: 900;
+
+      transform: rotate(12deg);
+    }
+
+    .about-text h2 {
+      font-size: clamp(50px, 7vw, 100px);
+      line-height: .85;
+      margin-bottom: 35px;
+    }
+
+    .about-text p {
+      line-height: 2;
+      color: #d0cec7;
+      margin-bottom: 30px;
+    }
+
+    .about-info {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+
+      border-top: 1px solid #555;
+      padding-top: 25px;
+    }
+
+    .about-info small {
+      display: block;
+      color: #929292;
+      margin-bottom: 8px;
+    }
+
+
+    /* =========================
+       MEMBERS
+    ========================== */
+
+    #members {
+      min-height: 950px;
+      position: relative;
+    }
+
+    .members-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .members-heading p {
+      margin-top: 20px;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    .member-orbit {
+      width: 680px;
+      height: 680px;
+
+      max-width: 100%;
+
+      margin: auto;
+
+      position: relative;
+      border: 1px dashed rgba(0,0,0,.25);
+      border-radius: 50%;
+    }
+
+    .orbit-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%,-50%);
+
+      width: 180px;
+      height: 180px;
+
+      border-radius: 50%;
+
+      background: #171717;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      z-index: 2;
+    }
+
+    .orbit-center strong {
+      font-size: 27px;
+    }
+
+    .orbit-center span {
+      color: #b7c93b;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-top: 8px;
+    }
+
+    .member {
+      position: absolute;
+
+      width: 145px;
+
+      border: none;
+      background: transparent;
+
+      cursor: pointer;
+
+      text-align: center;
+      transition: .3s;
+
+      z-index: 5;
+    }
+
+    .member:hover {
+      transform: scale(1.08);
+    }
+
+    .member-photo {
+      width: 145px;
+      height: 145px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border: 4px solid #171717;
+
+      filter: NONE;
+
+      transition: .3s;
+    }
+
+    .member:hover .member-photo {
+      filter: grayscale(0%);
+      border-color: #b7c93b;
+    }
+
+    .member-name {
+      margin-top: 9px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+
+    /* Member positions */
+
+    .m1 {
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .m1:hover {
+      transform: translateX(-50%) scale(1.08);
+    }
+
+    .m2 {
+      right: -15px;
+      top: 150px;
+    }
+
+    .m3 {
+      right: 20px;
+      bottom: 95px;
+    }
+
+    .m4 {
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .m4:hover {
+      transform: translateX(-50%) scale(1.08);
+    }
+
+    .m5 {
+      left: 20px;
+      bottom: 95px;
+    }
+
+    .m6 {
+      left: -15px;
+      top: 150px;
+    }
+
+
+    /* =========================
+       PROFILE PANEL
+    ========================== */
+
+    .profile-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+
+      width: min(550px,100%);
+      height: 100vh;
+
+      background: #171717;
+      color: white;
+
+      z-index: 2000;
+
+      padding: 90px 50px 50px;
+
+      overflow-y: auto;
+
+      transition: right .5s cubic-bezier(.77,0,.18,1);
+    }
+
+    .profile-panel.active {
+      right: 0;
+    }
+
+    .close-profile {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+
+      font-size: 35px;
+
+      border: none;
+      background: none;
+      color: white;
+
+      cursor: pointer;
+    }
+
+    #profileImage {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+
+      margin-bottom: 30px;
+    }
+
+    #profileName {
+      font-size: 65px;
+      line-height: 1;
+    }
+
+    #profileKorean {
+      color: #b7c93b;
+      font-size: 18px;
+      margin: 8px 0 30px;
+    }
+
+    .profile-title {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: #b7c93b;
+      margin: 30px 0 15px;
+    }
+
+    #profileInfo,
+    #profileStory {
+      line-height: 1.9;
+      color: #d1d1d1;
+    }
+
+    .profile-overlay {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0,0,0,.6);
+
+      opacity: 0;
+      pointer-events: none;
+
+      z-index: 1900;
+
+      transition: .3s;
+    }
+
+    .profile-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+
+    /* =========================
+       ALBUM
+    ========================== */
+
+    #album {
+      background: #b7c93b;
+    }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .album-cover {
+      border: 2px solid #171717;
+      box-shadow: 25px 25px 0 #171717;
+    }
+
+    .album-text h2 {
+      font-size: clamp(60px,9vw,130px);
+      line-height: .75;
+      letter-spacing: -6px;
+      margin-bottom: 35px;
+    }
+
+    .album-text p {
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .tracklist {
+      margin-top: 40px;
+      border-top: 2px solid #171717;
+    }
+
+    .track {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 17px 5px;
+
+      border-bottom: 1px solid #171717;
+
+      font-weight: 700;
+
+      transition: .25s;
+    }
+
+    .track:hover {
+      padding-left: 15px;
+      background: rgba(255,255,255,.2);
+    }
+
+
+    /* =========================
+       MV
+    ========================== */
+
+    #mv {
+      background: #202020;
+      color: white;
+      text-align: center;
+    }
+
+    #mv .section-title {
+      margin-bottom: 50px;
+    }
+
+    .video-wrap {
+      position: relative;
+
+      width: min(1100px,100%);
+      aspect-ratio: 16 / 9;
+
+      margin: auto;
+
+      border: 1px solid #555;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    .mv-caption {
+      margin-top: 25px;
+      letter-spacing: 5px;
+      font-size: 12px;
+      color: #b7c93b;
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    .gallery-grid {
+      margin-top: 60px;
+
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-auto-rows: 260px;
+
+      gap: 15px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition: .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item::after {
+      content: "VIEW +";
+
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+
+      background: #b7c93b;
+
+      padding: 7px 12px;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+
+    /* =========================
+       TIMELINE
+    ========================== */
+
+    #timeline {
+      background: #e5a9b9;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+
+      margin-top: 70px;
+
+      border-top: 2px solid #171717;
+    }
+
+    .timeline-event {
+      padding: 35px 25px;
+
+      position: relative;
+
+      border-right: 1px solid rgba(0,0,0,.25);
+    }
+
+    .timeline-event::before {
+      content: "";
+
+      position: absolute;
+      top: -9px;
+      left: 25px;
+
+      width: 16px;
+      height: 16px;
+
+      background: #171717;
+
+      border-radius: 50%;
+    }
+
+    .timeline-event h3 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .timeline-event p {
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       SHOP
+    ========================== */
+
+    #shop {
+      background: #f2efe4;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+
+      gap: 25px;
+
+      margin-top: 60px;
+    }
+
+    .product-card {
+      border: 1px solid #171717;
+      padding: 15px;
+
+      transition: .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 10px 10px 0 #b7c93b;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+
+      background: #ddd;
+    }
+
+    .product-card h3 {
+      margin: 20px 0 8px;
+      font-size: 22px;
+    }
+
+    .product-card p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+
+    /* =========================
+       DISTRICT ID
+    ========================== */
+
+    #district-id {
+      background: #171717;
+      color: white;
+    }
+
+    .id-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 70px;
+
+      margin-top: 50px;
+    }
+
+    .id-form label {
+      display: block;
+
+      font-size: 11px;
+      letter-spacing: 3px;
+
+      color: #b7c93b;
+
+      margin: 22px 0 8px;
+    }
+
+    .id-form input,
+    .id-form select {
+      width: 100%;
+
+      padding: 15px;
+
+      background: transparent;
+
+      border: 1px solid #777;
+
+      color: white;
+    }
+
+    .id-form select option {
+      color: black;
+    }
+
+    .district-card {
+      background: #b7c93b;
+      color: #171717;
+
+      padding: 45px;
+
+      min-height: 370px;
+
+      transform: rotate(2deg);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      border-radius: 4px;
+    }
+
+    .district-card h3 {
+      font-size: 40px;
+    }
+
+    .district-card-name {
+      font-size: 45px;
+      font-weight: 900;
+    }
+
+
+    /* =========================
+       LOCATION
+    ========================== */
+
+    #location {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+
+    .location-header {
+      padding: 0 8% 60px;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+    }
+
+    .map {
+      min-height: 500px;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+
+      min-height: 500px;
+
+      border: 0;
+    }
+
+    .location-info {
+      background: #b7c93b;
+
+      padding: 70px 45px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .location-info h3 {
+      font-size: 50px;
+      line-height: .9;
+      margin-bottom: 30px;
+    }
+
+    .location-info p {
+      line-height: 2;
+    }
+
+
+    /* =========================
+       SOCIAL
+    ========================== */
+
+    #social {
+      background: #b7c93b;
+    }
+
+    .social-links {
+      margin-top: 50px;
+    }
+
+    .social-links a {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 22px 5px;
+
+      border-bottom: 1px solid #171717;
+
+      font-size: clamp(30px,5vw,70px);
+      font-weight: 900;
+
+      transition: .3s;
+    }
+
+    .social-links a:hover {
+      padding-left: 25px;
+      background: #171717;
+      color: white;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #171717;
+      color: #aaa;
+
+      padding: 55px 8%;
+    }
+
+    .footer-logo {
+      color: white;
+
+      font-size: 45px;
+      font-weight: 900;
+
+      margin-bottom: 30px;
+    }
+
+    footer p {
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .about-grid,
+      .album-grid,
+      .id-layout,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image img {
+        height: 500px;
+      }
+
+      .member-orbit {
+        width: 500px;
+        height: 500px;
+      }
+
+      .member {
+        width: 100px;
+      }
+
+      .member-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .orbit-center {
+        width: 130px;
+        height: 130px;
+      }
+
+      .m2 {
+        right: -5px;
+        top: 110px;
+      }
+
+      .m3 {
+        right: 10px;
+        bottom: 65px;
+      }
+
+      .m5 {
+        left: 10px;
+        bottom: 65px;
+      }
+
+      .m6 {
+        left: -5px;
+        top: 110px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+        border-top: none;
+        border-left: 2px solid #171717;
+      }
+
+      .timeline-event::before {
+        top: 40px;
+        left: -9px;
+      }
+
+      .shop-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        letter-spacing: -4px;
+      }
+
+      .hero-image {
+        height: 300px;
+      }
+
+      .about-info {
+        grid-template-columns: 1fr;
+      }
+
+      #members {
+        min-height: 700px;
+      }
+
+      .member-orbit {
+        width: 340px;
+        height: 340px;
+
+        margin-top: 70px;
+      }
+
+      .member {
+        width: 75px;
+      }
+
+      .member-photo {
+        width: 75px;
+        height: 75px;
+
+        border-width: 2px;
+      }
+
+      .member-name {
+        font-size: 10px;
+      }
+
+      .orbit-center {
+        width: 100px;
+        height: 100px;
+      }
+
+      .orbit-center strong {
+        font-size: 18px;
+      }
+
+      .m2 {
+        top: 70px;
+      }
+
+      .m3 {
+        bottom: 35px;
+      }
+
+      .m5 {
+        bottom: 35px;
+      }
+
+      .m6 {
+        top: 70px;
+      }
+
+      .profile-panel {
+        padding: 80px 25px 40px;
+      }
+
+      #profileImage {
+        height: 330px;
+      }
+
+      #profileName {
+        font-size: 50px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
+      }
+
+      .gallery-item:first-child {
+        grid-row: span 1;
+      }
+
+      .shop-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================== -->
+
+<header>
+
+  <a href="#home" class="logo">USPEER</a>
+
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#members">MEMBERS</a>
+    <a href="#album">ALBUM</a>
+    <a href="#mv">MV</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#shop">SHOP</a>
+    <a href="#location">LOCATION</a>
+  </nav>
+
+  <a href="#members" class="green-btn">ENTER DISTRICT →</a>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section id="home">
+
+  <div class="hero-bg-word">
+    BITE
+  </div>
+
+  <div class="hero">
+
+    <p class="hero-small">
+      USPEER · 1ST MINI ALBUM
+    </p>
+
+    <h1>USPEER</h1>
+
+    <h2>ENTER THE BITE DISTRICT</h2>
+
+    <div class="hero-image">
+      <img
+        src="https://www.epochtimes.com/_next/image?url=https%3A%2F%2Fi.epochtimes.com%2Fassets%2Fuploads%2F2026%2F06%2Fid14790550-2606170052292188.jpg&w=1200&q=75"
+        alt="USPEER Group"
+      >
+    </div>
+
+    <p class="hero-date">
+      BITE DISTRICT · 2026.06.17
+    </p>
+
+    <a href="#about" class="green-btn">
+      ENTER THE DISTRICT ↓
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section id="about">
+
+  <div class="about-grid">
+
+    <div class="about-image">
+
+      <img
+        src="https://cdn.diodeo.jp/cdn/webzine/2026/06/09/20260609110836_6a2775a43afe9.jpeg"
+      >
+
+      <div class="about-sticker">
+        BITE<br>DISTRICT
+      </div>
+
+    </div>
+
+
+    <div class="about-text">
+
+      <div class="section-label">
+        01 · ABOUT
+      </div>
+
+      <h2>
+        WHO IS<br>
+        USPEER?
+      </h2>
+
+      <p>
+USPEER 是韓國WM娛樂於2025年推出的七人女子團體，組合於2025年6月4日以單曲專輯《SPEED ZONE》出道，現為MW娛樂旗下團體。2026年5月6日，Yeowon 退出團體，現任成員由Soee、Sian、Seoyu、Daon、Chaena、Roa 所組成
+      </p>
+
+      <p>
+        組合的團體名稱取自「US」（意為「我們」）和「PEER」（意為「提問」）這兩個字。組合在一起，寓意著我們理解世界的本質，攜手共創更美好的未來。
+      </p>
+
+
+      <div class="about-info">
+
+        <div>
+          <small>GROUP</small>
+          <strong>USPEER</strong>
+        </div>
+
+        <div>
+          <small>MEMBERS</small>
+          <strong>06</strong>
+        </div>
+
+        <div>
+          <small>AGENCY</small>
+          <strong>MW ENT.</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     MEMBERS
+========================== -->
+
+<section id="members">
+
+  <div class="members-heading">
+
+    <div class="section-label">
+      02 · MEMBERS
+    </div>
+
+    <h2 class="section-title">
+      MEET THE<br>DISTRICT
+    </h2>
+
+    <p>
+      6 MEMBERS · 6 STORIES · 1 DISTRICT
+    </p>
+
+  </div>
+
+
+  <div class="member-orbit">
+
+
+    <div class="orbit-center">
+      <strong>USPEER</strong>
+      <span>BITE DISTRICT</span>
+    </div>
+
+
+    <!-- SOEE -->
+
+    <button
+      class="member m1"
+      onclick="openMember('soee')"
+    >
+
+      <img
+        class="member-photo"
+        src="https://i.namu.wiki/i/5ocM26c86cBGw9vy1kG6UipIAw25AeCgU-R5RNDRRNVNSHx0dWuJJrNMpipvOMJX-HCTaHPJ_2P_B0GTNTIl4WdTRA-wpwHAjaCGSoYPTFlQCUsH3FiVwpXCq_Z0JKPgmoqvbD94VQ2GsI0vNp8SFA.webp"
+        alt="SOEE"
+      >
+
+      <div class="member-name">
+        SOEE
+      </div>
+
+    </button>
+
+
+    <!-- SIAN -->
+
+    <button
+      class="member m2"
+      onclick="openMember('sian')"
+    >
+
+      <img
+        class="member-photo"
+        src="https://i.namu.wiki/i/rpaP0csJaDHgrJPbgW8LiVDfkf_wKSXaACsQkNRSr7hpNroan05w0_GNrO13pXrDK7Erv042qtX86GjA91JKUkIIP0hmJZKkSXNkm4wyQv4E_PDKtoVrFv9QxjsNXspehQHj2qbc4Wuq9HV4fLfs2Q.webp"
+        alt="SIAN"
+      >
+
+      <div class="member-name">
+        SIAN
+      </div>
+
+    </button>
+
+
+    <!-- SEOYU -->
+
+    <button
+      class="member m3"
+      onclick="openMember('seoyu')"
+    >
+
+      <img
+        class="member-photo"
+        src="https://i.namu.wiki/i/W8thxGxnztXeYMl7AA8psX9V49-6IQ96QyL3sbNCEYanVfEVmv0UvxDr0_mq1JHsIWJGTm70UmrwLKf_oRBf6iar2GbC8PAQ0xOq7UQ-EUPUcdc2b4ZdUL64L4Y-bQClfzS9fHOcMcxnVWAkaC-2Zg.webp"
+        alt="SEOYU"
+      >
+
+      <div class="member-name">
+        SEOYU
+      </div>
+
+    </button>
+
+
+    <!-- DAON -->
+
+    <button
+      class="member m4"
+      onclick="openMember('daon')"
+    >
+
+      <img
+        class="member-photo"
+        src="https://i.namu.wiki/i/3wHdK7EotM79vTOqM2NBcjjoVUOfSRwVnXnF2kD4k9ufnOBmivGsMD7ux3v_eYYCERf9pHlNLjZXd-cq6vIMF6d1zD--M7GttBTyq3j4--W7SDhEYKBD0Ringf58D0G0TKYQkUXuZHS53SjYhqDF4Q.webp"
+        alt="DAON"
+      >
+
+      <div class="member-name">
+        DAON
+      </div>
+
+    </button>
+
+
+    <!-- CHAENA -->
+
+    <button
+      class="member m5"
+      onclick="openMember('chaena')"
+    >
+
+      <img
+        class="member-photo"
+        src="https://i.namu.wiki/i/cwY40kqtP3VASyXS1V1GuxrpFHMnP-3khqFz1FxcycliNls8mc8nPVf7URlP-bTYC47Nwq5KDYuBMURyan7ZNQ6fyqs5E8iGDyUBjEkqy6j7iKlbqWImhXYXb1YyZ-F6w1w3nB34I4cyZiBbKfdvfA.webp"
+        alt="CHAENA"
+      >
+
+      <div class="member-name">
+        CHAENA
+      </div>
+
+    </button>
+
+
+    <!-- ROA -->
+
+    <button
+      class="member m6"
+      onclick="openMember('roa')"
+    >
+
+      <img
+        class="member-photo"
+        src="https://i.namu.wiki/i/EfSTWMW2NouQchF7whCjbgEcpkQvyVEHFJrhRVk99JqRjO5BUnpy1FWELLDIdA8jEHTCftjHE0Ulx4zJIIhFTUWeNwMpqPz1Q1ThHDSvTlNcHX7OFUCHkw1VGeF0MOw1cMyv24KMaeb15YZAX1t15g.webp"
+        alt="ROA"
+      >
+
+      <div class="member-name">
+        ROA
+      </div>
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROFILE PANEL
+========================== -->
+
+<div
+  class="profile-overlay"
+  id="profileOverlay"
+  onclick="closeProfile()"
+></div>
+
+
+<div
+  class="profile-panel"
+  id="profilePanel"
+>
+
+  <button
+    class="close-profile"
+    onclick="closeProfile()"
+  >
+    ×
+  </button>
+
+
+  <img
+    id="profileImage"
+    src=""
+    alt=""
+  >
+
+
+  <h2 id="profileName">
+    MEMBER
+  </h2>
+
+  <div id="profileKorean"></div>
+
+
+  <div class="profile-title">
+    PROFILE
+  </div>
+
+  <div id="profileInfo"></div>
+
+
+  <div class="profile-title">
+    HER STORY
+  </div>
+
+  <div id="profileStory"></div>
+
+
+</div>
+
+
+
+<!-- =========================
+     ALBUM
+========================== -->
+
+<section id="album">
+
+  <div class="album-grid">
+
+    <div>
+
+      <img
+        class="album-cover"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8nZ9tY4o4WQtoUeBnqaKiV3adBWpOmow-pQrbsQjAsA&s=10"
+        alt="BITE DISTRICT"
+      >
+
+    </div>
+
+
+    <div class="album-text">
+
+      <div class="section-label">
+        03 · 1ST MINI ALBUM
+      </div>
+
+      <h2>
+        BITE<br>
+        DISTRICT
+      </h2>
+
+      <p>
+        BITE DISTRICT 描繪 USPEER 六位成員彼此相遇、
+        建立關係並逐漸形成屬於她們自己世界的過程。
+        每一首歌曲都代表 DISTRICT 中不同的情緒與故事。
+      </p>
+
+
+      <div class="tracklist">
+
+        <div class="track">
+          <span>01 · WICKED GAME</span>
+          <span>TITLE</span>
+        </div>
+
+        <div class="track">
+          <span>02 · SO FINE</span>
+          <span>TRACK</span>
+        </div>
+
+        <div class="track">
+          <span>03 · BESTIE</span>
+          <span>TRACK</span>
+        </div>
+
+        <div class="track">
+          <span>04 · LOUD</span>
+          <span>TRACK</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     MV
+========================== -->
+
+<section id="mv">
+
+  <div class="section-label">
+    04 · LATEST VIDEO
+  </div>
+
+  <h2 class="section-title">
+    WICKED GAME
+  </h2>
+
+
+  <div class="video-wrap">
+
+    <iframe
+      src="https://www.youtube.com/embed/iEXktZOXcNo?si=HXr2LdPukkT5gZfw"
+      title="USPEER YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+
+  <div class="mv-caption">
+    USPEER · BITE DISTRICT · OFFICIAL MV
+  </div>
+
+</section>
+<!-- =========================
+     BITE DISTRICT STAGE
+========================== -->
+
+<div style="margin-top: 70px;">
+
+  <a
+    href="https://www.youtube.com/watch?v=SBTo5J63Mw4&list=RDSBTo5J63Mw4&start_radio=1"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="green-btn"
+  >
+    WATCH BITE DISTRICT STAGE ↗
+  </a>
+
+  <div class="mv-caption">
+  </div>
+
+</div>
+
+
+<!-- =========================
+     GALLERY
+========================== -->
+
+<section id="gallery">
+
+  <div class="section-label">
+    05 · ARCHIVE
+  </div>
+
+  <h2 class="section-title">
+    DISTRICT<br>
+    ARCHIVE
+  </h2>
+
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT14N3VdtYvTXVi35Yu04M6qmvMceq5OAKPgupPcuRJnw&s=10" alt="USPEER">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHCVKo3GkSq7AVPN7GTeKG8kYA2gk_qoFh6_sJjA8Afg&s=10" alt="USPEER">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmlKgWtdjlsz3FOiM03vqn9sYBKWcPJArrTP2P2Z9NOQ&s=10" alt="USPEER">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsByIv6r1YhHF65wLDUHtjLariR1WDmtZUBeD-8r6S5g&s=10" alt="USPEER">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPdQbVSPLbkchBJd7uVSD4UKKwG9VGVlwxVz9AU54h0A&s=10" alt="USPEER">
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     TIMELINE
+========================== -->
+
+<section id="timeline">
+
+  <div class="section-label">
+    06 · OUR JOURNEY
+  </div>
+
+  <h2 class="section-title">
+    USPEER<br>
+    TIMELINE
+  </h2>
+
+
+  <div class="timeline">
+
+    <div class="timeline-event">
+      <h3>2025年4月3日</h3>
+      <p>
+WM娛樂宣布將推出出道實境節目《RUN UP!》節目由Oh My Girl的隊長Hyojung主持。之後成員們得知了她們的團體名稱為USPEER。
+      </p>
+    </div>
+
+    <div class="timeline-event">
+      <h3>2025年6月4日</h3>
+      <p>
+        USPEER 正式出道，
+        向大眾展示團體音樂與視覺風格。
+      </p>
+    </div>
+
+    <div class="timeline-event">
+      <h3>2026年6月17日</h3>
+      <p>
+        USPEER 推出首張迷你專輯，
+        開啟 BITE DISTRICT。
+      </p>
+    </div>
+
+    <div class="timeline-event">
+      <h3>2026年8月23日</h3>
+      <p>
+        USPEER 在台北市的 NUZONE 舉辦首場海外 FAN MEETING。
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     SHOP
+========================== -->
+
+<section id="shop">
+
+  <div class="section-label">
+    07 · OFFICIAL GOODS
+  </div>
+
+  <h2 class="section-title">
+    SHOP THE<br>
+    DISTRICT
+  </h2>
+
+
+  <div class="shop-grid">
+
+
+    <div class="product-card">
+
+      <img
+        src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSJaFJaXQLEIVDw-Pep-37lRuF4WdCsSNQNQjVOZog-i6oEPvKLdkq6Am3mi1cFc_Auuq8ij82YLfos_vl8I_FMEQSvOnks"
+        alt="BITE DISTRICT Album"
+      >
+
+      <h3>
+        BITE DISTRICT
+      </h3>
+
+      <p>
+        KINETIC VER.
+      </p>
+
+      <a
+        href="https://hk.koreadepart.com/item/1780382695"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="green-btn"
+      >
+        BUY NOW ↗
+      </a>
+
+    </div>
+
+
+    <div class="product-card">
+
+      <img
+        src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT_xmtk3awdUJmFOEdEDHlAtyDudFEpyC4YoLh2yy_oUiZoJng0iWHLHpFdh_mXSr8t9OMFhsAJmNFU2djkv6WQSkEnlf3bkw"
+        alt="BITE DISTRICT Album"
+      >
+
+      <h3>
+        BITE DISTRICT
+      </h3>
+
+      <p>
+        STATIC VER.
+      </p>
+
+      <a
+        href="https://hk.koreadepart.com/item/1780385659"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="green-btn"
+      >
+        BUY NOW ↗
+      </a>
+
+    </div>
+
+
+    <div class="product-card">
+
+      <img
+        src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS6PCEJK_uMHw40T0Kwr8kQvoqia4aRWV27c2x08n6OhdqgQsB4mXLFJA-jCMsOL1UJ341hCz1LlSNU1gkZdWZmFlDNf-j_HQ6gVh2qEAWE"
+        alt="BITE DISTRICT Album"
+      >
+
+      <h3>
+        BITE DISTRICT
+      </h3>
+
+      <p>
+        DISTRICT VER.
+      </p>
+
+      <a
+        href="https://k-pop-planet.com/zh/products/uspeer-bite-district-bite-ver-pocaalbum?variant=52435497320760&country=HK&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AU7gw4WuCLT8p21k3oXgnzs70bjK5ek8AC4ilugMOu1w5rSgzxXmEYYIcOA"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="green-btn"
+      >
+        BUY NOW ↗
+      </a>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     DISTRICT ID
+========================== -->
+
+<section id="district-id">
+
+  <div class="section-label">
+    08 · INTERACTIVE
+  </div>
+
+  <h2 class="section-title">
+    CREATE YOUR<br>
+    DISTRICT ID
+  </h2>
+
+
+  <div class="id-layout">
+
+
+    <div class="id-form">
+
+      <label>
+        YOUR NAME
+      </label>
+
+      <input
+        type="text"
+        id="visitorName"
+        placeholder="ENTER YOUR NAME"
+      >
+
+
+      <label>
+        YOUR BIAS
+      </label>
+
+      <select id="visitorBias">
+
+        <option>SOEE</option>
+        <option>SIAN</option>
+        <option>SEOYU</option>
+        <option>DAON</option>
+        <option>CHAENA</option>
+        <option>ROA</option>
+
+      </select>
+
+
+      <label>
+        FAVORITE TRACK
+      </label>
+
+      <select id="visitorTrack">
+
+        <option>WICKED GAME</option>
+        <option>SO FINE</option>
+        <option>BESTIE</option>
+        <option>LOUD</option>
+        <option>ZOOM</option>
+        <option>TELEPATHY</option>
+
+      </select>
+
+
+      <br><br>
+
+      <button
+        class="green-btn"
+        onclick="createDistrictID()"
+      >
+        CREATE ID →
+      </button>
+
+    </div>
+
+
+
+    <div class="district-card">
+
+      <div>
+
+        <small>
+          USPEER · MEMBER ACCESS
+        </small>
+
+        <h3>
+          BITE<br>
+          DISTRICT
+        </h3>
+
+      </div>
+
+
+      <div>
+
+        <div
+          class="district-card-name"
+          id="cardName"
+        >
+          YOUR NAME
+        </div>
+
+        <p>
+          BIAS ·
+          <strong id="cardBias">
+            SOEE
+          </strong>
+        </p>
+
+        <p>
+          TRACK ·
+          <strong id="cardTrack">
+            WICKED GAME
+          </strong>
+        </p>
+
+      </div>
+
+
+      <strong>
+        #USPEER
+      </strong>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOCATION
+========================== -->
+
+<section id="location">
+
+  <div class="location-header">
+
+    <div class="section-label">
+      09 · LOCATION
+    </div>
+
+    <h2 class="section-title">
+      FIND THE<br>
+      DISTRICT
+    </h2>
+
+  </div>
+
+
+  <div class="location-grid">
+
+
+    <div class="map">
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x1532121813ba7d5f%3A0xf62ed2eb43458a8a!2sWM%20Entertainment!5e0!3m2!1szh-TW!2stw!4v1790864893696!5m2!1szh-TW!2stw"
+        width="600"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+
+    </div>
+
+
+    <div class="location-info">
+
+      <div class="section-label">
+        AGENCY
+      </div>
+
+      <h3>
+        MW<br>
+        ENTERTAINMENT
+      </h3>
+
+      <p>
+        SEOUL · SOUTH KOREA
+      </p>
+
+      <br>
+
+      <p>
+        USPEER<br>
+        OFFICIAL AGENCY
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     SOCIAL
+========================== -->
+
+<section id="social">
+
+  <div class="section-label">
+    10 · CONNECT
+  </div>
+
+  <h2 class="section-title">
+    STAY IN THE<br>
+    DISTRICT
+  </h2>
+
+
+  <div class="social-links">
+
+    <a
+      href="https://www.instagram.com/uspeer.official/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      IG OFFICIAL 
+      <span>↗</span>
+    </a>
+
+    <a
+      href="https://www.youtube.com/channel/UCStX7ZS-N4xLuLiX5b_Y4lw"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      YOUTUBE
+      <span>↗</span>
+    </a>
+
+    <a
+      href="#home"
+    >
+      BACK TO TOP
+      <span>↑</span>
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+  <div class="footer-logo">
+    USPEER
+  </div>
+
+  <p>
+    ENTER THE BITE DISTRICT.
+  </p>
+
+  <br>
+
+  <p>
+    This website is a student project created for educational purposes.<br>
+    This project is not affiliated with USPEER or MW Entertainment.
+  </p>
+
+  <br>
+
+  <p>
+    © 2026 STUDENT PROJECT
+  </p>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+  /*
+  ============================
+  MEMBER DATA
+
+  之後可以直接在這裡修改
+  六位成員的文字資料
+  ============================
+  */
+
+  const memberData = {
+
+    soee: {
+      name: "SOEE",
+      korean: "김소연",
+      image: "https://i.namu.wiki/i/5ocM26c86cBGw9vy1kG6UipIAw25AeCgU-R5RNDRRNVNSHx0dWuJJrNMpipvOMJX-HCTaHPJ_2P_B0GTNTIl4WdTRA-wpwHAjaCGSoYPTFlQCUsH3FiVwpXCq_Z0JKPgmoqvbD94VQ2GsI0vNp8SFA.webp",
+
+      info: `
+        生日 · 2007年3月11日<br>
+        擔當 · 主RAPPER<br>
+        家鄉 · 慶尚南道清州市
+      `,
+
+      story: `
+        在這裡放入 SOEE 的個人介紹、出道經歷、
+        成員特色以及相關故事。之後可以依照 Namu Wiki
+        的資料整理並替換這段文字。
+      `
+    },
+
+
+    sian: {
+      name: "SIAN",
+      korean: "이시연",
+      image: "https://i.namu.wiki/i/rpaP0csJaDHgrJPbgW8LiVDfkf_wKSXaACsQkNRSr7hpNroan05w0_GNrO13pXrDK7Erv042qtX86GjA91JKUkIIP0hmJZKkSXNkm4wyQv4E_PDKtoVrFv9QxjsNXspehQHj2qbc4Wuq9HV4fLfs2Q.webp",
+
+      info: `
+        生日 · 2007年8月18日<br>
+        擔當 · 隊長、主唱<br>
+        家鄉 · 釜山廣域市
+      `,
+
+      story: `
+        在這裡放入 SIAN 的個人介紹與故事。
+        可以加入她的個性、團內特色以及出道相關經歷。
+      `
+    },
+
+
+    seoyu: {
+      name: "SEOYU",
+      korean: "박선우",
+      image: "https://i.namu.wiki/i/W8thxGxnztXeYMl7AA8psX9V49-6IQ96QyL3sbNCEYanVfEVmv0UvxDr0_mq1JHsIWJGTm70UmrwLKf_oRBf6iar2GbC8PAQ0xOq7UQ-EUPUcdc2b4ZdUL64L4Y-bQClfzS9fHOcMcxnVWAkaC-2Zg.webp",
+
+      info: `
+        生日 · 2007年11月26日<br>
+        擔當 · 主舞<br>
+        家鄉 · 京畿道華城市
+      `,
+
+      story: `
+        在這裡放入 SEOYU 的個人介紹與故事。
+        之後可以依照資料來源修改。
+      `
+    },
+
+
+    daon: {
+      name: "DAON",
+      korean: "김은지",
+      image: "https://i.namu.wiki/i/3wHdK7EotM79vTOqM2NBcjjoVUOfSRwVnXnF2kD4k9ufnOBmivGsMD7ux3v_eYYCERf9pHlNLjZXd-cq6vIMF6d1zD--M7GttBTyq3j4--W7SDhEYKBD0Ringf58D0G0TKYQkUXuZHS53SjYhqDF4Q.webp",
+
+      info: `
+        生日 · 2008年7月7日<br>
+        擔當 · 領唱、活潑擔當<br>
+        家鄉 · 全羅南道順天市
+      `,
+
+      story: `
+        在這裡放入 DAON 的個人介紹、人物特色與相關故事。
+      `
+    },
+
+
+    chaena: {
+      name: "CHAENA",
+      korean: "한채희",
+      image: "https://i.namu.wiki/i/cwY40kqtP3VASyXS1V1GuxrpFHMnP-3khqFz1FxcycliNls8mc8nPVf7URlP-bTYC47Nwq5KDYuBMURyan7ZNQ6fyqs5E8iGDyUBjEkqy6j7iKlbqWImhXYXb1YyZ-F6w1w3nB34I4cyZiBbKfdvfA.webp",
+
+      info: `
+        生日 · 2009年6月8日<br>
+        擔當 · 領唱<br>
+        家鄉 · 全羅南道順天市
+      `,
+
+      story: `
+        在這裡放入 CHAENA 的個人介紹與故事。
+      `
+    },
+
+
+    roa: {
+      name: "ROA",
+      korean: "김가연",
+      image: "https://i.namu.wiki/i/EfSTWMW2NouQchF7whCjbgEcpkQvyVEHFJrhRVk99JqRjO5BUnpy1FWELLDIdA8jEHTCftjHE0Ulx4zJIIhFTUWeNwMpqPz1Q1ThHDSvTlNcHX7OFUCHkw1VGeF0MOw1cMyv24KMaeb15YZAX1t15g.webp",
+
+      info: `
+        生日 · 2009年10月28日<br>
+        擔當 · 忙內、領唱<br>
+        家鄉 · 京畿道安養市
+      `,
+
+      story: `
+        在這裡放入 ROA 的個人介紹、團內特色以及人物故事。
+      `
+    }
+
+  };
+
+
+  /*
+  ============================
+  OPEN MEMBER PROFILE
+  ============================
+  */
+
+  function openMember(member) {
+
+    const data = memberData[member];
+
+    document.getElementById("profileImage").src =
+      data.image;
+
+    document.getElementById("profileName").innerText =
+      data.name;
+
+    document.getElementById("profileKorean").innerText =
+      data.Korean;
+
+    document.getElementById("profileInfo").innerHTML =
+      data.info;
+
+    document.getElementById("profileStory").innerHTML =
+      data.story;
+
+
+    document
+      .getElementById("profilePanel")
+      .classList.add("active");
+
+
+    document
+      .getElementById("profileOverlay")
+      .classList.add("active");
+
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  /*
+  ============================
+  CLOSE PROFILE
+  ============================
+  */
+
+  function closeProfile() {
+
+    document
+      .getElementById("profilePanel")
+      .classList.remove("active");
+
+
+    document
+      .getElementById("profileOverlay")
+      .classList.remove("active");
+
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  /*
+  ============================
+  ESC CLOSE PROFILE
+  ============================
+  */
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if(event.key === "Escape") {
+        closeProfile();
+      }
+
+    }
+  );
+
+
+  /*
+  ============================
+  DISTRICT ID
+  ============================
+  */
+
+  function createDistrictID() {
+
+    const name =
+      document
+      .getElementById("visitorName")
+      .value.trim();
+
+
+    const bias =
+      document
+      .getElementById("visitorBias")
+      .value;
+
+
+    const track =
+      document
+      .getElementById("visitorTrack")
+      .value;
+
+
+    document
+      .getElementById("cardName")
+      .innerText =
+      name || "DISTRICT MEMBER";
+
+
+    document
+      .getElementById("cardBias")
+      .innerText =
+      bias;
+
+
+    document
+      .getElementById("cardTrack")
+      .innerText =
+      track;
+
+  }
+
+</script>
+
+
+</body>
+</html>
